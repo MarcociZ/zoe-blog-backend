@@ -1,4 +1,4 @@
-# Technologies to use in backend:
+# Technologies being used for backend:
 
 - NodeJs/ES6 v21.6.0 - is used to implement node commants for web server inmplementation
 
