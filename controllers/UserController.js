@@ -36,14 +36,11 @@ export const register = async (req, res) => {
             token,
         });
 
-    }
-    catch (error) {
-        console.log(error);
-        res.status(500).json({
-            message: "The user wasn't registered",
+    } catch (error) {
+        res.status(501).json({
+            message: "The user wasn't registered: " + error,
         });
     }
-
 };
 
 export const login = async (req, res) => {
@@ -52,8 +49,8 @@ export const login = async (req, res) => {
 
         if (!user) {
             return res.status(404).json({
-                    message: "No valid password or login"
-                });
+                message: "No valid password or login"
+            });
         }
 
         const isValidPass = await bcrypt.compare(req.body.password, user._doc.passwordHash);
@@ -82,9 +79,8 @@ export const login = async (req, res) => {
         });
 
     } catch (error) {
-        console.log(error);
         res.status(500).json({
-            message: "Unsuccess Authorization",
+            message: "Unsuccessful Authorization: " + error,
         });
 
     }
@@ -106,9 +102,8 @@ export const getMe = async (req, res) => {
             ...userData,
         });
     } catch (error) {
-        console.log(error);
         res.status(500).json({
-            message: "Error occured",
+            message: "Error occured: " + error,
         });
     }
 }
